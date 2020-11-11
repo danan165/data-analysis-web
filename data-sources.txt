@@ -1,3 +1,0 @@
-Google Open Source: https://www.google.com/publicdata/directory
-WHO Data Repository: https://www.who.int/gho/database/en/
-SSA Dataset: https://www.ssa.gov/open/data/FO-RS-Address-Open-Close-Time-App-Devs.html
