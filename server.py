@@ -1,7 +1,6 @@
 import flask
 import pandas as pd
 from flask import Flask, render_template, url_for
-from src import water_temp_time_series_pred
 
 app = Flask(__name__)
 
