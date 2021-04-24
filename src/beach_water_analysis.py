@@ -2,8 +2,8 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import datetime as dt
 
-from fbprophet import Prophet
-from fbprophet.plot import add_changepoints_to_plot
+# from fbprophet import Prophet
+# from fbprophet.plot import add_changepoints_to_plot
 
 def plot_turbidity_by_location(year, df):
     cols_to_keep = ["Measurement Timestamp", "Turbidity"]
@@ -99,37 +99,35 @@ def plot_transducer_by_location(year, df):
     print(plot_title, ' fig saved!')
 
 
-def water_temp_time_series_pred(df):
-    cols_to_keep = ["Water Temperature", "Measurement Timestamp"]
+# def water_temp_time_series_pred(df):
+#     cols_to_keep = ["Water Temperature", "Measurement Timestamp"]
 
-    ohio_street_beach_water_temp_df = df[df["Beach Name"] == "Ohio Street Beach"]
-    ohio_street_beach_water_temp_df = ohio_street_beach_water_temp_df[cols_to_keep]
-    ohio_street_beach_water_temp_df = ohio_street_beach_water_temp_df[(ohio_street_beach_water_temp_df['Measurement Timestamp'].dt.year == 2015) \
-                            & (ohio_street_beach_water_temp_df['Measurement Timestamp'] < '09/30/2015')]
-    ohio_street_beach_water_temp_df.rename(columns={'Measurement Timestamp':'ds', 'Water Temperature':'y'}, inplace = True)
-    m = Prophet() # seasonality_mode='multiplicative' (additive by default)
-    m.fit(ohio_street_beach_water_temp_df)
+#     ohio_street_beach_water_temp_df = df[df["Beach Name"] == "Ohio Street Beach"]
+#     ohio_street_beach_water_temp_df = ohio_street_beach_water_temp_df[cols_to_keep]
+#     ohio_street_beach_water_temp_df = ohio_street_beach_water_temp_df[(ohio_street_beach_water_temp_df['Measurement Timestamp'].dt.year == 2015) \
+#                             & (ohio_street_beach_water_temp_df['Measurement Timestamp'] < '09/30/2015')]
+#     ohio_street_beach_water_temp_df.rename(columns={'Measurement Timestamp':'ds', 'Water Temperature':'y'}, inplace = True)
+#     m = Prophet() # seasonality_mode='multiplicative' (additive by default)
+#     m.fit(ohio_street_beach_water_temp_df)
 
-    # data to hold future predictions
-    # period is one row in your data
-    future = m.make_future_dataframe(periods=7)
-    forecast = m.predict(future)
-    fig3 = m.plot(forecast)
-    a = add_changepoints_to_plot(fig3.gca(), m, forecast)
-    return fig3
+#     # data to hold future predictions
+#     # period is one row in your data
+#     future = m.make_future_dataframe(periods=7)
+#     forecast = m.predict(future)
+#     fig3 = m.plot(forecast)
+#     a = add_changepoints_to_plot(fig3.gca(), m, forecast)
+#     return fig3
 
 
 
 if __name__=="__main__":
     df = pd.read_csv("../data/Beach_Water_Quality_-_Automated_Sensors.csv", parse_dates=['Measurement Timestamp'])
     print('read data from csv!')
-    # locations = df["Beach Name"].unique()
-    # plot_turbidity_by_location(2015, df)
-    # turbidity_stats_by_location(2015, df)
-    # plot_water_temp_by_location(2015, df)
-    # plot_transducer_by_location(2014, df)
-    water_temp_time_series_pred(df)
-    print('time series plot saved!')
+    locations = df["Beach Name"].unique()
+    plot_turbidity_by_location(2015, df)
+    turbidity_stats_by_location(2015, df)
+    plot_water_temp_by_location(2015, df)
+    plot_transducer_by_location(2014, df)
 
 
 

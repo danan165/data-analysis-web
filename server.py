@@ -15,17 +15,17 @@ def watertemp():
     return render_template("watertemp.html")
 
 
-@app.route('/getwatertempdata', methods=['GET'])
-def get_water_temp_data():
-    df = pd.read_csv("data/Beach_Water_Quality_-_Automated_Sensors.csv", parse_dates=['Measurement Timestamp'])
-    cols_to_keep = ["Water Temperature", "Measurement Timestamp"]
+# @app.route('/getwatertempdata', methods=['GET'])
+# def get_water_temp_data():
+#     df = pd.read_csv("data/Beach_Water_Quality_-_Automated_Sensors.csv", parse_dates=['Measurement Timestamp'])
+#     cols_to_keep = ["Water Temperature", "Measurement Timestamp"]
 
-    ohio_street_beach_water_temp_df = df[df["Beach Name"] == "Ohio Street Beach"]
-    ohio_street_beach_water_temp_df = ohio_street_beach_water_temp_df[cols_to_keep]
-    ohio_street_beach_water_temp_df = ohio_street_beach_water_temp_df[(ohio_street_beach_water_temp_df['Measurement Timestamp'].dt.year == 2015) \
-                            & (ohio_street_beach_water_temp_df['Measurement Timestamp'] < '09/30/2015')]
+#     ohio_street_beach_water_temp_df = df[df["Beach Name"] == "Ohio Street Beach"]
+#     ohio_street_beach_water_temp_df = ohio_street_beach_water_temp_df[cols_to_keep]
+#     ohio_street_beach_water_temp_df = ohio_street_beach_water_temp_df[(ohio_street_beach_water_temp_df['Measurement Timestamp'].dt.year == 2015) \
+#                             & (ohio_street_beach_water_temp_df['Measurement Timestamp'] < '09/30/2015')]
 
-    return ohio_street_beach_water_temp_df
+#     return ohio_street_beach_water_temp_df
 
 if __name__=="__main__":
     app.run()
