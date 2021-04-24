@@ -3,27 +3,42 @@
 {% block content %}
 <br><br>
 <div class="container">
-<div class="row align-items-start">
-    <div class="col">
-    <h1>Predicting Water Temperature</h1>
-    Predicting water temperature at Ohio Street Beach in the fall of 2015, based on data collected by the city of Chicago during the summer of 2015.
+    <!-- Project Description -->
+    <div class="row align-items-center">
+        <h1>Predicting Water Temperature</h1>
+        Predicting water temperature at Ohio Street Beach in the fall of 2015, based on data collected by the city of Chicago during the summer of 2015.
     </div>
-</div>
-<br>
-<div class="row align-items-center">
-    <div class="col">
-        <div class="card" style="width: 40rem;">
-        <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="card-link">Card link</a>
-            <a href="#" class="card-link">Another link</a>
-        </div>
-        </div>
+    <br>
+
+    <!-- Project -->
+    <div class="row align-items-center">
+        <h3>Ohio Street Beach Water Temperature 2015 (Celsius)</h3>
+        <img src="{{url_for('static', filename='water_temp_pred_plot.svg')}}"/>
     </div>
-</div>
-<br>
+    <br>
+    <div class="row align-items-center">
+        <h2>Water Temperature Dataset</h2>
+        <p id="water_temp_dataset_description">
+            I downloaded the "Beach_Water_Quality - Automated_Sensors" dataset from the <a href="https://data.cityofchicago.org/">City of Chicago Data Portal</a>. 
+            The dataset included sensor readings from several locations, but I chose to use "Ohio Street Beach" for a time series prediction, as this location had the most amount of sensor data.
+        </p>
+
+        <button class="btn btn-outline-success my-2 my-sm-0" onclick="">Load Dataset</button>
+
+        <div></div>
+        <br><br><br><br>
+
+        <table style="width:100%" id="ohio_street_water_temp_dataset">
+            <tr>
+                <th>Water Temperature</th>
+                <th>Measurement Timestamp</th>
+            </tr>
+            <tr>
+                <td>TODO</td>
+                <td>TODO</td>
+            </tr>
+        </table>
+    </div>
 </div>
 
 {% endblock %}
